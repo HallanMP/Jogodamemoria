@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jogo da Memória Avançado</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Jogo da Memória</h1>
+
+    <div class="config">
+      <label for="tema">Escolha o tema:</label>
+      <select id="tema" aria-label="Selecionar tema do jogo">
+        <option value="simbolos">Símbolos</option>
+        <option value="letras">Letras</option>
+        <option value="numeros">Números</option>
+      </select>
+
+      <label for="modo">Modo de jogo:</label>
+      <select id="modo" aria-label="Selecionar modo de jogo">
+        <option value="1">Solo</option>
+        <option value="2">Multiplayer (2 jogadores)</option>
+      </select>
+
+      <button id="btn-iniciar" aria-label="Iniciar jogo">▶️ Iniciar</button>
+    </div>
+
+    <div class="info">
+      <div id="status" role="alert" aria-live="polite"></div>
+      <div id="temporizador">Tempo: 0s</div>
+      <div id="vezJogador" class="hidden">Vez do Jogador 1</div>
+      <div id="placar" class="hidden">
+        <strong>Placar:</strong> Jogador 1: <span id="placar1">0</span> - Jogador 2: <span id="placar2">0</span>
+      </div>
+    </div>
+
+    <button id="btn-reiniciar" class="hidden" aria-label="Reiniciar jogo">🔄 Reiniciar</button>
+
+    <div id="game-board" class="tabuleiro" role="grid" aria-label="Tabuleiro do jogo da memória"></div>
+
+    <h2>Ranking - Melhores Tempos (Solo)</h2>
+    <ol id="ranking"></ol>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

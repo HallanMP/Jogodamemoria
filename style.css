@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  font-family: 'Fredoka One', cursive, sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(253, 160, 133, 0.4);
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #ff6f61;
+  text-shadow: 2px 2px 5px rgba(255, 111, 97, 0.6);
+}
+
+.config {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.config label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 5px;
+  user-select: none;
+}
+
+.config select,
+.config button {
+  font-family: 'Fredoka One', cursive, sans-serif;
+  font-size: 1.1rem;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 2px solid #ff6f61;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.config button:hover,
+.config select:hover,
+.config select:focus,
+.config button:focus {
+  background-color: #ff6f61;
+  color: white;
+  outline: none;
+}
+
+#btn-iniciar {
+  background: #34a853;
+  color: white;
+  border-color: #34a853;
+}
+
+#btn-iniciar:hover,
+#btn-iniciar:focus {
+  background: #2a853f;
+}
+
+#btn-reiniciar {
+  background: #ff6f61;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 111, 97, 0.5);
+  transition: background-color 0.3s ease;
+  margin: 15px auto 20px auto;
+  display: block;
+}
+
+#btn-reiniciar:hover,
+#btn-reiniciar:focus {
+  background: #ff4a3b;
+  outline: none;
+}
+
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.carta {
+  perspective: 800px;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.carta-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.carta.virada .carta-inner {
+  transform: rotateY(180deg);
+}
+
+.carta-front,
+.carta-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  user-select: none;
+}
+
+.carta-front {
+  background: #ff6f61;
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.4);
+  color: white;
+}
+
+.carta-back {
+  background: #f0f0f0;
+  color: #333;
+  transform: rotateY(180deg);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.carta.certa .carta-inner {
+  box-shadow: 0 0 15px 4px #4caf50;
+  cursor: default;
+}
+
+.carta.errada .carta-inner {
+  animation: shake 0.4s;
+}
+
+#status {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  min-height: 28px;
+  color: #555;
+  font-weight: 600;
+  min-height: 2em;
+}
+
+#temporizador,
+#vezJogador,
+#placar {
+  font-size: 1.3rem;
+  margin: 6px 0;
+  font-weight: 600;
+  color: #444;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animação shake para erro */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* Ranking */
+#ranking {
+  max-width: 400px;
+  margin: 0 auto 30px auto;
+  text-align: left;
+  font-size: 1.1rem;
+  padding-left: 20px;
+  color: #333;
+}
+
+#ranking li {
+  margin-bottom: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .carta {
+    width: 60px;
+    height: 60px;
+  }
+
+  .carta-front,
+  .carta-back {
+    font-size: 2rem;
+  }
+
+  .config {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
